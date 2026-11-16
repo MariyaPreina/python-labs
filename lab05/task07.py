@@ -1,0 +1,22 @@
+# Задача 7.
+# Дан целочисленный массив размера N без одинаковых чисел.
+# Если элементы образуют арифметическую прогрессию, вывести её разность,
+# иначе вывести 0.
+
+
+numbers = list(map(int, input("Введите элементы массива через пробел: ").split()))
+n = len(numbers)
+if n < 2:
+    print("Требуется не менее 2 элементов.")
+else:
+    difference = numbers[1] - numbers[0]
+    # При нулевой разности нарушается условие об отсутствии одинаковых чисел.
+    is_progression = difference != 0
+    for i in range(2, n):
+        if numbers[i] - numbers[i - 1] != difference:
+            is_progression = False
+            break
+    if is_progression:
+        print("Разность прогрессии:", difference)
+    else:
+        print("Разность прогрессии:", 0)
