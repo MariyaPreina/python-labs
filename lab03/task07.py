@@ -11,7 +11,7 @@ a = Decimal(input("Введите A (> 0): "))
 b = Decimal(input("Введите B (0 < B < A): "))
 
 remainder = a
-# Равенство тоже учитывается: последний отрезок может заполнить остаток целиком.
+# из длины A вычитаем B, пока ещё помещается целый отрезок B
 while remainder >= b:
     remainder = remainder - b
 
