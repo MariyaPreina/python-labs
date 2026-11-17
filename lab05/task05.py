@@ -10,10 +10,12 @@ if n < 1:
 else:
     result = []
     # Номера 1, 3, 5 соответствуют индексам 0, 2, 4.
+    # range(начало, граница, шаг): с индекса 0, до n не включительно, шаг +2.
     for i in range(0, n, 2):
         result.append(numbers[i])
     # Последний чётный номер: N для чётного N, иначе N-1.
     last_even = n - n % 2
+    # С индекса last_even-1, до 0 не включительно, шаг -2 (назад).
     for i in range(last_even - 1, 0, -2):
         result.append(numbers[i])
     print("Порядок элементов:", result)

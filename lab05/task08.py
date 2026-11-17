@@ -10,6 +10,7 @@ if n < 2:
 else:
     # Начинаем со второго элемента: его номер 2, индекс 1.
     minimum = numbers[1]
+    # С индекса 3 до n (не включая), шаг 2: проверяем позиции 4, 6, 8…
     for i in range(3, n, 2):
         if numbers[i] < minimum:
             minimum = numbers[i]
