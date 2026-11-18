@@ -39,23 +39,39 @@ def inorder_traversal(root):
         return
     # Сначала меньшие значения слева, затем текущий узел, затем большие или равные.
     inorder_traversal(root.left)
-    print(root.value)
+    print(root.value, end=" ")
     inorder_traversal(root.right)
+
+
+def show_tree(root, level=0, label="Корень"):
+    # Отступ показывает глубину, подпись — связь с родителем.
+    if root is None:
+        return
+    print("    " * level + f"{label}: {root.value}")
+    show_tree(root.left, level + 1, "Слева")
+    show_tree(root.right, level + 1, "Справа")
 
 
 if __name__ == "__main__":
     tree = None
-    values = [50, 30, 20, 40, 70, 60, 80]
+    values = list(map(int, input("Введите целые числа для дерева через пробел: ").split()))
     for value in values:
         # Присваивание сохраняет корень, в том числе при первой вставке.
         tree = insert(tree, value)
 
-    target = 40
+    print("\nДерево (отступы показывают вложенность):")
+    show_tree(tree)
+    if tree is None:
+        print("Дерево пустое.")
+
+    target = int(input("Введите искомое число: "))
     result = search(tree, target)
     if result is not None:
         print("Элемент найден:", result.value)
     else:
         print("Элемент не найден:", target)
 
-    print("Симметричный обход дерева:")
+    print("\nОбход: левое поддерево → узел → правое поддерево")
+    print("Числа по возрастанию:", end=" ")
     inorder_traversal(tree)
+    print()
